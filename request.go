@@ -468,6 +468,7 @@ func (r *Request) Patch(url string) (*Response, error) {
 // 		resp, err := resty.R().Execute(resty.GET, "http://httpbin.org/get")
 //
 func (r *Request) Execute(method, url string) (*Response, error) {
+	defer releaseBuffer(r.bodyBuf)
 	var addrs []*net.SRV
 	var err error
 

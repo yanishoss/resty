@@ -785,7 +785,6 @@ func (c *Client) GetClient() *http.Client {
 
 // executes the given `Request` object and returns response
 func (c *Client) execute(req *Request) (*Response, error) {
-	defer releaseBuffer(req.bodyBuf)
 	// Apply Request middleware
 	var err error
 
